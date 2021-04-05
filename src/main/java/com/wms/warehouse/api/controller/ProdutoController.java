@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import com.wms.warehouse.domain.model.Produto;
+import com.wms.warehouse.domain.model.ProdutoVolume;
 import com.wms.warehouse.domain.repository.ProdutoRepository;
+import com.wms.warehouse.domain.repository.ProdutoVolumeRepository;
 import com.wms.warehouse.domain.service.ProdutoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class ProdutoController {
 
     @Autowired
     private ProdutoService produtoService;
+
+	@Autowired
+	private ProdutoVolumeRepository produtoVolumeRepository;
 
     @GetMapping
     public List<Produto> listar() {
@@ -76,5 +81,19 @@ public class ProdutoController {
 		
 		return ResponseEntity.noContent().build();
 	}
+
+	@GetMapping("/codbarras/{codBarras}")
+    public Produto buscarPorCodBarras(@PathVariable String codBarras) {
+        Produto produto = produtoVolumeRepository.findByCodBarras(codBarras);
+
+		return produto;
+
+
+     /*    if (produto.isPresent()) {
+            return ResponseEntity.ok(produto.get());
+        }
+
+        return ResponseEntity.notFound().build(); */
+    }
 
 }

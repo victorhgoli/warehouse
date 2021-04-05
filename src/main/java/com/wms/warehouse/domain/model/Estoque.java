@@ -26,11 +26,11 @@ public class Estoque {
     private Long id;
 
     @ManyToOne
-
     private Produto produto;
-    @ManyToOne
 
+    @ManyToOne
     private Endereco endereco;
+
     @ManyToOne
     private Volume volume;
 

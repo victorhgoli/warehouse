@@ -8,11 +8,9 @@ import javax.persistence.ElementCollection;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -45,7 +43,7 @@ public class ProdutoVolume {
     private double altura;
     private double largura;
     private double profundidade;
-    public void save(ProdutoVolume prodVol) {
-    }
+    private double peso;
+
 
 }

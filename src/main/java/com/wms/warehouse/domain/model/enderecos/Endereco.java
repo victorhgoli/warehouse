@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.wms.warehouse.domain.model.Estoque;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,10 +32,8 @@ public abstract class Endereco {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "endereco_pai_id",
-            foreignKey = @ForeignKey(name = "fk_endereco_enderecopai"))
+    @JoinColumn(name = "endereco_pai_id", foreignKey = @ForeignKey(name = "fk_endereco_enderecopai"))
     private Endereco enderecoPai;
-
 
     @OneToMany(mappedBy = "enderecoPai")
     private List<Endereco> enderecos;
@@ -41,4 +41,7 @@ public abstract class Endereco {
     private String codigo;
 
     private String descricao;
+
+    @OneToMany
+    private List<Estoque> estoques;
 }
